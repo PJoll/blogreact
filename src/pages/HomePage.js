@@ -3,7 +3,7 @@ import EmptyList from '../components/EmptyList';
 import BlogList from '../components/BlogList';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-import {BlogList } from '../config/Api';
+import {blogList } from '../config/Api';
 
 const HomePage = ({data}) => {
     const [blogs, setBlogs] = useState([]);
@@ -23,6 +23,11 @@ const HomePage = ({data}) => {
     const BlogContent = (id) => {
         data(id);
     }
+    useEffect(() => {
+        blogList().then((res) => {
+            setBlogs(res);
+        })
+    } , []);
     return(
         <div>
             <Header />
